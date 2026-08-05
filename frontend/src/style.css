@@ -1,0 +1,106 @@
+/* Colour system ported verbatim from the Tk app (UI_SPEC §0.6). The palette is
+   part of the product's identity, so it is reproduced rather than redesigned. */
+:root {
+  --surface: #f5f7fa;
+  --panel: #ffffff;
+  --border: #d7dde5;
+  --text: #1f2937;
+  --muted: #667085;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #b42318;
+  --danger-hover: #912018;
+  --toolbar: #e9eef5;
+
+  --nav: #263238;
+  --nav-hover: #37474f;
+  --nav-pressed: #455a64;
+
+  --taskbar: #e6ebf1;
+  --row-h: 28px;
+  --sel-bg: #dbeafe;
+  --sel-fg: #111827;
+  --head-bg: #eef2f6;
+  --head-fg: #344054;
+
+  --ok: #15803d;
+  --err: #b91c1c;
+  --attention: #1d4ed8;
+  --manual: #b45309;
+
+  --sidebar-w: 142px;
+  --dock-w: 320px;
+
+  color-scheme: light;
+  font-family: 'Microsoft YaHei', 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--surface);
+  /* Panes scroll; the shell itself never does. */
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) {
+  background: var(--toolbar);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+button.primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+button.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+button.danger:hover:not(:disabled) {
+  background: var(--danger-hover);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+
+.mono {
+  font-family: 'Cascadia Mono', Consolas, monospace;
+}
+.muted {
+  color: var(--muted);
+}

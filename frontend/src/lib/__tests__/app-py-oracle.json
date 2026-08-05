@@ -1,0 +1,3179 @@
+{
+  "_generated_by": "src/lib/__tests__/app-py-oracle.py — verbatim app.py slices under CPython 3.12.0. GENERATED; do not hand-edit.",
+  "constants": {
+    "DEFAULT_PAYPAL_EXTENSION_DIR": "D:\\downloads\\googledownloads\\palpay扩展\\palpay",
+    "AUDIO_DEFAULT_DEVICE_LABEL": "系统默认",
+    "SMSBOWER_DEFAULT_SERVICE": "dr",
+    "SMSBOWER_DEFAULT_COUNTRY": "33",
+    "SMSBOWER_DEFAULT_MAX_PRICE": "0.07",
+    "PROXY_ROUTE_MODE_DEFAULT": "照旧",
+    "PROXY_ROUTE_MODE_LOCAL_ONLY": "全走本地代理",
+    "ACCOUNT_ALL_GROUP": "全部",
+    "ACCOUNT_DEFAULT_GROUP": "未分组",
+    "ACCOUNT_SORT_COLUMNS": [
+      "email",
+      "type",
+      "status",
+      "attempts"
+    ],
+    "ACCOUNT_SORT_LABELS": {
+      "email": "邮箱",
+      "type": "类型",
+      "status": "状态",
+      "attempts": "撞链次数"
+    },
+    "ACCOUNT_STATUS_FILTER_ALL": "全部状态",
+    "ACCOUNT_STATUS_FILTER_OPTIONS": [
+      "全部状态",
+      "待处理",
+      "有 Session",
+      "Plus",
+      "Team",
+      "提链成功",
+      "失败"
+    ],
+    "FAILURE_WORDS": [
+      "失败",
+      "错误",
+      "耗尽",
+      "停用",
+      "封禁",
+      "不可用",
+      "拒绝",
+      "超时"
+    ],
+    "ACCOUNT_COLUMN_WIDTHS": {
+      "email": 260,
+      "type": 72,
+      "status": 160,
+      "attempts": 70
+    },
+    "SOUND_SEEDS": {
+      "success_sound_enabled": true,
+      "success_audio_device": "系统默认",
+      "pause_others_on_link_success": true
+    }
+  },
+  "exportGroup": [
+    {
+      "label": "已授权",
+      "handler": "export_authorized",
+      "tooltip": "导出已授权账号。",
+      "handlerLine": 24098
+    },
+    {
+      "label": "邮箱 RT",
+      "handler": "export_authorized_email_rt",
+      "tooltip": "导出邮箱 refresh_token。",
+      "handlerLine": 24118
+    },
+    {
+      "label": "sub2api",
+      "handler": "export_sub2api",
+      "tooltip": "导出 sub2api 格式。",
+      "handlerLine": 24484
+    },
+    {
+      "label": "选中 Session",
+      "handler": "export_selected_sessions",
+      "tooltip": "导出当前选中的 Session JSON。",
+      "handlerLine": 24138
+    },
+    {
+      "label": "选中 Raw",
+      "handler": "export_selected_raw",
+      "tooltip": "导出当前选中账号的 Raw 内容。",
+      "handlerLine": 24406
+    },
+    {
+      "label": "复制转换",
+      "handler": "copy_selected_session_conversion",
+      "tooltip": "把选中 Session 转成所选格式并复制到剪贴板。",
+      "handlerLine": 24342
+    },
+    {
+      "label": "导出转换",
+      "handler": "export_selected_session_conversion",
+      "tooltip": "把选中 Session 转成所选格式并保存为 JSON 文件。",
+      "handlerLine": 24355
+    },
+    {
+      "label": "导出ZIP",
+      "handler": "export_selected_session_conversion_zip",
+      "tooltip": "把选中账号按当前格式分别导出为独立 JSON，并打包成 ZIP。",
+      "handlerLine": 24377
+    }
+  ],
+  "promptTitles": [
+    {
+      "kind": "phone",
+      "title": "输入手机号"
+    },
+    {
+      "kind": "phone-code",
+      "title": "输入短信验证码"
+    },
+    {
+      "kind": "sms-code",
+      "title": "输入短信验证码"
+    },
+    {
+      "kind": "email-code",
+      "title": "输入邮箱验证码"
+    },
+    {
+      "kind": "email-otp",
+      "title": "输入邮箱验证码"
+    },
+    {
+      "kind": "",
+      "title": "输入验证码"
+    },
+    {
+      "kind": "Phone",
+      "title": "输入验证码"
+    },
+    {
+      "kind": "PHONE",
+      "title": "输入验证码"
+    },
+    {
+      "kind": "unknown",
+      "title": "输入验证码"
+    },
+    {
+      "kind": "email_code",
+      "title": "输入验证码"
+    },
+    {
+      "kind": "phone code",
+      "title": "输入验证码"
+    }
+  ],
+  "normalizeEmail": [
+    {
+      "input": "a@b.com",
+      "output": "a@b.com"
+    },
+    {
+      "input": "  a@b.com  ",
+      "output": "a@b.com"
+    },
+    {
+      "input": "\"a@b.com\"",
+      "output": "a@b.com"
+    },
+    {
+      "input": "'a@b.com'",
+      "output": "a@b.com"
+    },
+    {
+      "input": "“a@b.com”",
+      "output": "a@b.com"
+    },
+    {
+      "input": "‘a@b.com’",
+      "output": "a@b.com"
+    },
+    {
+      "input": "<a@b.com>",
+      "output": "a@b.com"
+    },
+    {
+      "input": "(a@b.com)",
+      "output": "a@b.com"
+    },
+    {
+      "input": "[a@b.com]",
+      "output": "a@b.com"
+    },
+    {
+      "input": "{a@b.com}",
+      "output": "a@b.com"
+    },
+    {
+      "input": "，a@b.com，",
+      "output": "a@b.com"
+    },
+    {
+      "input": ",a@b.com,",
+      "output": "a@b.com"
+    },
+    {
+      "input": ";a@b.com；",
+      "output": "a@b.com"
+    },
+    {
+      "input": "\ta@b.com\r\n",
+      "output": "a@b.com"
+    },
+    {
+      "input": "junk",
+      "output": "junk"
+    },
+    {
+      "input": "",
+      "output": ""
+    },
+    {
+      "input": "()",
+      "output": ""
+    },
+    {
+      "input": "a b@c.com d",
+      "output": "b@c.com"
+    },
+    {
+      "input": "b@c.co",
+      "output": "b@c.co"
+    },
+    {
+      "input": "b@c.c",
+      "output": "b@c.c"
+    },
+    {
+      "input": "first@x.com second@y.com",
+      "output": "first@x.com"
+    },
+    {
+      "input": "汉字a@b.com汉字",
+      "output": "a@b.com"
+    },
+    {
+      "input": "a@b.com.",
+      "output": "a@b.com"
+    }
+  ],
+  "parseLine": [
+    {
+      "line": "a@b.com----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid",
+      "error": "格式错误，应为 email----password----client_id----refresh_token",
+      "account": null
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "----pw----cid----rt",
+      "error": "email 不能为空",
+      "account": null
+    },
+    {
+      "line": "  a@b.com ---- pw ---- cid ---- rt  ",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com--------cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw--------rt",
+      "error": "非 Cloud Mail 邮箱的 client_id / refresh_token 不能为空",
+      "account": null
+    },
+    {
+      "line": "a@b.com----pw----cid----",
+      "error": "非 Cloud Mail 邮箱的 client_id / refresh_token 不能为空",
+      "account": null
+    },
+    {
+      "line": "not-an-email----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "not-an-email",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw--------  ----mail_provider=cloudmail",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "",
+        "refreshToken": "",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": "cloudmail"
+      }
+    },
+    {
+      "line": "a@b.com----pw--------  ----mail_provider=CloudMail",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "",
+        "refreshToken": "",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": "cloudmail"
+      }
+    },
+    {
+      "line": "a@b.com----pw--------  ----mail_provider=outlook",
+      "error": "非 Cloud Mail 邮箱的 client_id / refresh_token 不能为空",
+      "account": null
+    },
+    {
+      "line": "a@b.com----pw--------  ----mail_provider=gmail",
+      "error": "非 Cloud Mail 邮箱的 client_id / refresh_token 不能为空",
+      "account": null
+    },
+    {
+      "line": "a@b.com----pw--------  ----mail_type=cloudmail",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "",
+        "refreshToken": "",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": "cloudmail"
+      }
+    },
+    {
+      "line": "\"a@b.com\"----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "<a@b.com>----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "（a@b.com）----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "，a@b.com；----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "name a@b.com tail----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "A@B.COM----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "A@B.COM",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "[a@b.com]----pw----cid----rt",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----rt_token=RT1",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT1",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----openai_rt=RT2",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT2",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----RT_TOKEN=RT3",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT3",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----rt_token=  RT4  ",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT4",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----rt_token=a=b",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "a=b",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----rt_token=",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----auth_phone=+33123456",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+33123456",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----auth_phone_number=+33123456",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+33123456",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----phone=+33123456",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+33123456",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----auth_phone_sms_url=https://sms.example/1",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/1",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----auth_sms_url=https://sms.example/2",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/2",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----phone_sms_url=https://sms.example/3",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/3",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----sms_url=https://sms.example/4",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/4",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----receive_mailbox=<c@d.com>",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "c@d.com",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----mailbox_email=c@d.com",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "c@d.com",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----receive_email= c@d.com ",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "c@d.com",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----inbox=c@d.com",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "c@d.com",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----inbox=junk",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "junk",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----account_type=team",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "team",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=plus",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=FREE",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=k12",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=pro",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----type=team----rt_token=RT",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "team",
+        "status": "已绑定手机号",
+        "openaiRT": "RT",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----+33 1 23 45 67https://sms.example/x",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "待获取RT",
+        "openaiRT": "",
+        "authPhoneNumber": "+33 1 23 45 67",
+        "authPhoneSMSURL": "https://sms.example/x",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----+331234567",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+331234567",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----12345",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----123456",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "123456",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----https://sms.example/y",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/y",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----http://sms.example/y",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "http://sms.example/y",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----ftp://sms.example/y",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----+331234567----https://sms.example/z",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "待获取RT",
+        "openaiRT": "",
+        "authPhoneNumber": "+331234567",
+        "authPhoneSMSURL": "https://sms.example/z",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----phone=+1----+339999999",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+1",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----sms_url=https://a/1----https://b/2",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://a/1",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----+331234567----+339999999",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+331234567",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----(33) 12.34-56",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----garbage----https://sms.example/w",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "https://sms.example/w",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----phone=+331----sms_url=https://s/1",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "待获取RT",
+        "openaiRT": "",
+        "authPhoneNumber": "+331",
+        "authPhoneSMSURL": "https://s/1",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----phone=+331",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "+331",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----rt_token=RT----phone=+331----sms_url=https://s/1",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT",
+        "authPhoneNumber": "+331",
+        "authPhoneSMSURL": "https://s/1",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----   ----rt_token=RT",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "已绑定手机号",
+        "openaiRT": "RT",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----\ttype=plus\t",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "plus",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    }
+  ],
+  "parseLineUnicodeDigits": [
+    {
+      "line": "a@b.com----pw----cid----rt----１２３４５６７",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "１２３４５６７",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    },
+    {
+      "line": "a@b.com----pw----cid----rt----٣٣١٢٣٤٥٦",
+      "error": "",
+      "account": {
+        "email": "a@b.com",
+        "password": "pw",
+        "clientID": "cid",
+        "refreshToken": "rt",
+        "accountType": "free",
+        "status": "",
+        "openaiRT": "",
+        "authPhoneNumber": "٣٣١٢٣٤٥٦",
+        "authPhoneSMSURL": "",
+        "receiveMailbox": "",
+        "mailProvider": ""
+      }
+    }
+  ],
+  "parseText": [
+    {
+      "text": "a@b.com----pw----cid----rt",
+      "rows": [
+        {
+          "line": 1,
+          "error": "",
+          "account": {
+            "email": "a@b.com",
+            "password": "pw",
+            "clientID": "cid",
+            "refreshToken": "rt",
+            "accountType": "free",
+            "status": "",
+            "openaiRT": "",
+            "authPhoneNumber": "",
+            "authPhoneSMSURL": "",
+            "receiveMailbox": "",
+            "mailProvider": ""
+          }
+        }
+      ]
+    },
+    {
+      "text": "\n\na@b.com----pw----cid----rt\n\n\nbad-line\n\n",
+      "rows": [
+        {
+          "line": 1,
+          "error": "",
+          "account": {
+            "email": "a@b.com",
+            "password": "pw",
+            "clientID": "cid",
+            "refreshToken": "rt",
+            "accountType": "free",
+            "status": "",
+            "openaiRT": "",
+            "authPhoneNumber": "",
+            "authPhoneSMSURL": "",
+            "receiveMailbox": "",
+            "mailProvider": ""
+          }
+        },
+        {
+          "line": 2,
+          "error": "格式错误，应为 email----password----client_id----refresh_token",
+          "account": null
+        }
+      ]
+    },
+    {
+      "text": "   \n\t\n",
+      "rows": []
+    },
+    {
+      "text": "",
+      "rows": []
+    },
+    {
+      "text": "bad\nalso-bad----x",
+      "rows": [
+        {
+          "line": 1,
+          "error": "格式错误，应为 email----password----client_id----refresh_token",
+          "account": null
+        },
+        {
+          "line": 2,
+          "error": "格式错误，应为 email----password----client_id----refresh_token",
+          "account": null
+        }
+      ]
+    },
+    {
+      "text": "a@b.com----pw----cid----rt\r\nc@d.com----pw----cid----rt\r\n",
+      "rows": [
+        {
+          "line": 1,
+          "error": "",
+          "account": {
+            "email": "a@b.com",
+            "password": "pw",
+            "clientID": "cid",
+            "refreshToken": "rt",
+            "accountType": "free",
+            "status": "",
+            "openaiRT": "",
+            "authPhoneNumber": "",
+            "authPhoneSMSURL": "",
+            "receiveMailbox": "",
+            "mailProvider": ""
+          }
+        },
+        {
+          "line": 2,
+          "error": "",
+          "account": {
+            "email": "c@d.com",
+            "password": "pw",
+            "clientID": "cid",
+            "refreshToken": "rt",
+            "accountType": "free",
+            "status": "",
+            "openaiRT": "",
+            "authPhoneNumber": "",
+            "authPhoneSMSURL": "",
+            "receiveMailbox": "",
+            "mailProvider": ""
+          }
+        }
+      ]
+    },
+    {
+      "text": "one----two\n\nb@c.com----pw----cid----rt\nthree",
+      "rows": [
+        {
+          "line": 1,
+          "error": "格式错误，应为 email----password----client_id----refresh_token",
+          "account": null
+        },
+        {
+          "line": 2,
+          "error": "",
+          "account": {
+            "email": "b@c.com",
+            "password": "pw",
+            "clientID": "cid",
+            "refreshToken": "rt",
+            "accountType": "free",
+            "status": "",
+            "openaiRT": "",
+            "authPhoneNumber": "",
+            "authPhoneSMSURL": "",
+            "receiveMailbox": "",
+            "mailProvider": ""
+          }
+        },
+        {
+          "line": 3,
+          "error": "格式错误，应为 email----password----client_id----refresh_token",
+          "account": null
+        }
+      ]
+    }
+  ],
+  "importGroup": [
+    {
+      "active": "全部",
+      "group": "未分组"
+    },
+    {
+      "active": "未分组",
+      "group": "未分组"
+    },
+    {
+      "active": "组A",
+      "group": "组A"
+    },
+    {
+      "active": "",
+      "group": ""
+    },
+    {
+      "active": "全部 ",
+      "group": "全部 "
+    }
+  ],
+  "rows": [
+    {
+      "email": "zoe@example.com",
+      "account_type": "free",
+      "group": "",
+      "statusText": "待处理",
+      "hasSession": false,
+      "link": "",
+      "attempts": 0
+    },
+    {
+      "email": "amy@example.com",
+      "account_type": "Plus",
+      "group": "组A",
+      "statusText": "Session已获取",
+      "hasSession": true,
+      "link": "",
+      "attempts": 3
+    },
+    {
+      "email": "bob@example.com",
+      "account_type": "pro",
+      "group": "组A",
+      "statusText": "长链已提取",
+      "hasSession": false,
+      "link": "https://pay/1",
+      "attempts": 1
+    },
+    {
+      "email": "cat@example.com",
+      "account_type": "team",
+      "group": "",
+      "statusText": "待处理",
+      "hasSession": false,
+      "link": "",
+      "attempts": 12
+    },
+    {
+      "email": "dan@example.com",
+      "account_type": "free",
+      "group": "组B",
+      "statusText": "登录失败",
+      "hasSession": false,
+      "link": "",
+      "attempts": 2
+    },
+    {
+      "email": "eve@example.com",
+      "account_type": "free",
+      "group": "",
+      "statusText": "代理耗尽",
+      "hasSession": false,
+      "link": "",
+      "attempts": 0
+    },
+    {
+      "email": "fay@example.com",
+      "account_type": "FREE",
+      "group": "组B",
+      "statusText": "疑似已封禁",
+      "hasSession": false,
+      "link": "",
+      "attempts": 0
+    },
+    {
+      "email": "gus@example.com",
+      "account_type": "plus",
+      "group": "",
+      "statusText": "待处理",
+      "hasSession": false,
+      "link": "",
+      "attempts": 0
+    },
+    {
+      "email": "HAL@example.com",
+      "account_type": "free",
+      "group": "未分组",
+      "statusText": "待获取RT(带授权手机号)",
+      "hasSession": false,
+      "link": "",
+      "attempts": 5
+    },
+    {
+      "email": "ivy@example.com",
+      "account_type": "",
+      "group": "组A",
+      "statusText": "待处理",
+      "hasSession": false,
+      "link": "",
+      "attempts": 0
+    }
+  ],
+  "visible": [
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "待处理",
+      "search": "",
+      "visible": [0, 3, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "有 Session",
+      "search": "",
+      "visible": [1]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "Plus",
+      "search": "",
+      "visible": [1, 2, 7]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "Team",
+      "search": "",
+      "visible": [3]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "提链成功",
+      "search": "",
+      "visible": [2]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "失败",
+      "search": "",
+      "visible": [4, 5, 6]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "无此过滤器",
+      "search": "",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "",
+      "search": "",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": [1, 2, 9]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "待处理",
+      "search": "",
+      "visible": [9]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "有 Session",
+      "search": "",
+      "visible": [1]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "Plus",
+      "search": "",
+      "visible": [1, 2]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "Team",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组A",
+      "statusFilter": "提链成功",
+      "search": "",
+      "visible": [2]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "失败",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组A",
+      "statusFilter": "无此过滤器",
+      "search": "",
+      "visible": [1, 2, 9]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "",
+      "search": "",
+      "visible": [1, 2, 9]
+    },
+    {
+      "group": "组B",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": [4, 6]
+    },
+    {
+      "group": "组B",
+      "statusFilter": "待处理",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "有 Session",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "Plus",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "Team",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "提链成功",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "失败",
+      "search": "",
+      "visible": [4, 6]
+    },
+    {
+      "group": "组B",
+      "statusFilter": "无此过滤器",
+      "search": "",
+      "visible": [4, 6]
+    },
+    {
+      "group": "组B",
+      "statusFilter": "",
+      "search": "",
+      "visible": [4, 6]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": [0, 3, 5, 7, 8]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "待处理",
+      "search": "",
+      "visible": [0, 3, 7, 8]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "有 Session",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "Plus",
+      "search": "",
+      "visible": [7]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "Team",
+      "search": "",
+      "visible": [3]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "提链成功",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "失败",
+      "search": "",
+      "visible": [5]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "无此过滤器",
+      "search": "",
+      "visible": [0, 3, 5, 7, 8]
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "",
+      "search": "",
+      "visible": [0, 3, 5, 7, 8]
+    },
+    {
+      "group": "组X",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "待处理",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "有 Session",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "Plus",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "Team",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "提链成功",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "失败",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "无此过滤器",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "组X",
+      "statusFilter": "",
+      "search": "",
+      "visible": []
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "   ",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "example",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "AMY",
+      "visible": [1]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "amy plus",
+      "visible": [1]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "plus amy",
+      "visible": [1]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "amy team",
+      "visible": []
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "组A",
+      "visible": [1, 2, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "未分组",
+      "visible": [0, 3, 5, 7, 8]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "\t失败\n",
+      "visible": [4]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "hal",
+      "visible": [8]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "  a   e  ",
+      "visible": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "撞",
+      "visible": []
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "free 组B",
+      "visible": [4, 6]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "全部状态",
+      "search": "nope",
+      "visible": []
+    },
+    {
+      "group": "组A",
+      "statusFilter": "有 Session",
+      "search": "amy",
+      "visible": [1]
+    },
+    {
+      "group": "组A",
+      "statusFilter": "有 Session",
+      "search": "bob",
+      "visible": []
+    },
+    {
+      "group": "组B",
+      "statusFilter": "失败",
+      "search": "登录",
+      "visible": [4]
+    },
+    {
+      "group": "组B",
+      "statusFilter": "失败",
+      "search": "nope",
+      "visible": []
+    },
+    {
+      "group": "未分组",
+      "statusFilter": "待处理",
+      "search": "hal",
+      "visible": [8]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "Plus",
+      "search": "example",
+      "visible": [1, 2, 7]
+    },
+    {
+      "group": "全部",
+      "statusFilter": "提链成功",
+      "search": "pro",
+      "visible": [2]
+    },
+    {
+      "group": "组X",
+      "statusFilter": "全部状态",
+      "search": "",
+      "visible": []
+    }
+  ],
+  "sorted": [
+    {
+      "column": "email",
+      "direction": "custom",
+      "emails": [
+        "zoe@example.com",
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "email",
+      "direction": "asc",
+      "emails": [
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com",
+        "zoe@example.com"
+      ]
+    },
+    {
+      "column": "email",
+      "direction": "desc",
+      "emails": [
+        "zoe@example.com",
+        "ivy@example.com",
+        "HAL@example.com",
+        "gus@example.com",
+        "fay@example.com",
+        "eve@example.com",
+        "dan@example.com",
+        "cat@example.com",
+        "bob@example.com",
+        "amy@example.com"
+      ]
+    },
+    {
+      "column": "type",
+      "direction": "custom",
+      "emails": [
+        "zoe@example.com",
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "type",
+      "direction": "asc",
+      "emails": [
+        "ivy@example.com",
+        "zoe@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "HAL@example.com",
+        "amy@example.com",
+        "gus@example.com",
+        "bob@example.com",
+        "cat@example.com"
+      ]
+    },
+    {
+      "column": "type",
+      "direction": "desc",
+      "emails": [
+        "cat@example.com",
+        "bob@example.com",
+        "amy@example.com",
+        "gus@example.com",
+        "zoe@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "status",
+      "direction": "custom",
+      "emails": [
+        "zoe@example.com",
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "status",
+      "direction": "asc",
+      "emails": [
+        "amy@example.com",
+        "eve@example.com",
+        "zoe@example.com",
+        "cat@example.com",
+        "gus@example.com",
+        "ivy@example.com",
+        "HAL@example.com",
+        "fay@example.com",
+        "dan@example.com",
+        "bob@example.com"
+      ]
+    },
+    {
+      "column": "status",
+      "direction": "desc",
+      "emails": [
+        "bob@example.com",
+        "dan@example.com",
+        "fay@example.com",
+        "HAL@example.com",
+        "zoe@example.com",
+        "cat@example.com",
+        "gus@example.com",
+        "ivy@example.com",
+        "eve@example.com",
+        "amy@example.com"
+      ]
+    },
+    {
+      "column": "attempts",
+      "direction": "custom",
+      "emails": [
+        "zoe@example.com",
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "attempts",
+      "direction": "asc",
+      "emails": [
+        "zoe@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "ivy@example.com",
+        "bob@example.com",
+        "dan@example.com",
+        "amy@example.com",
+        "HAL@example.com",
+        "cat@example.com"
+      ]
+    },
+    {
+      "column": "attempts",
+      "direction": "desc",
+      "emails": [
+        "cat@example.com",
+        "HAL@example.com",
+        "amy@example.com",
+        "dan@example.com",
+        "bob@example.com",
+        "zoe@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "nope",
+      "direction": "custom",
+      "emails": [
+        "zoe@example.com",
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com"
+      ]
+    },
+    {
+      "column": "nope",
+      "direction": "asc",
+      "emails": [
+        "amy@example.com",
+        "bob@example.com",
+        "cat@example.com",
+        "dan@example.com",
+        "eve@example.com",
+        "fay@example.com",
+        "gus@example.com",
+        "HAL@example.com",
+        "ivy@example.com",
+        "zoe@example.com"
+      ]
+    },
+    {
+      "column": "nope",
+      "direction": "desc",
+      "emails": [
+        "zoe@example.com",
+        "ivy@example.com",
+        "HAL@example.com",
+        "gus@example.com",
+        "fay@example.com",
+        "eve@example.com",
+        "dan@example.com",
+        "cat@example.com",
+        "bob@example.com",
+        "amy@example.com"
+      ]
+    }
+  ],
+  "toggle": [
+    {
+      "from": {
+        "column": "email",
+        "direction": "custom"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "custom"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "custom"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "custom"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "asc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "desc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "asc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "asc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "asc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "desc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "custom"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "desc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "desc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "email",
+        "direction": "desc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "custom"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "custom"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "custom"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "custom"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "asc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "asc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "desc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "asc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "asc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "desc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "desc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "custom"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "desc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "type",
+        "direction": "desc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "custom"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "custom"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "custom"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "custom"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "asc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "asc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "asc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "desc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "asc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "desc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "desc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "desc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "custom"
+      }
+    },
+    {
+      "from": {
+        "column": "status",
+        "direction": "desc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "custom"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "custom"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "custom"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "custom"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "asc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "asc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "asc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "asc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "desc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "desc"
+      },
+      "clicked": "email",
+      "to": {
+        "column": "email",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "desc"
+      },
+      "clicked": "type",
+      "to": {
+        "column": "type",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "desc"
+      },
+      "clicked": "status",
+      "to": {
+        "column": "status",
+        "direction": "asc"
+      }
+    },
+    {
+      "from": {
+        "column": "attempts",
+        "direction": "desc"
+      },
+      "clicked": "attempts",
+      "to": {
+        "column": "attempts",
+        "direction": "custom"
+      }
+    }
+  ],
+  "smsbower": [
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "0.07"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "0.07"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "",
+        "",
+        ""
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "  ",
+        "  ",
+        "  "
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "ab_09",
+        "187",
+        "1"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "ab_09",
+        "country": "187",
+        "maxPrice": "1"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr!",
+        "33",
+        ""
+      ],
+      "error": "SMSBower 服务代码格式不正确",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr dr",
+        "33",
+        ""
+      ],
+      "error": "SMSBower 服务代码格式不正确",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "汉",
+        "33",
+        ""
+      ],
+      "error": "SMSBower 服务代码格式不正确",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33a",
+        ""
+      ],
+      "error": "SMSBower 国家 ID 必须是数字",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "-1",
+        ""
+      ],
+      "error": "SMSBower 国家 ID 必须是数字",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "0"
+      ],
+      "error": "SMSBower 最高单价必须是大于 0 的数字，或留空",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "-0.5"
+      ],
+      "error": "SMSBower 最高单价必须是大于 0 的数字，或留空",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "abc"
+      ],
+      "error": "SMSBower 最高单价必须是大于 0 的数字，或留空",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "0.07 "
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "0.07"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        ".5"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ".5"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "5."
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "5."
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "1e-3"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "1e-3"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "+1"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "+1"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "0.0"
+      ],
+      "error": "SMSBower 最高单价必须是大于 0 的数字，或留空",
+      "normalized": null
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "٣٣",
+        ""
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "٣٣",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "１.５"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "１.５"
+      }
+    },
+    {
+      "input": [
+        true,
+        "",
+        "dr",
+        "33",
+        ""
+      ],
+      "error": "启用 SMSBower 前请填写 API Key",
+      "normalized": {
+        "enabled": true,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        true,
+        "  ",
+        "dr",
+        "33",
+        ""
+      ],
+      "error": "启用 SMSBower 前请填写 API Key",
+      "normalized": {
+        "enabled": true,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        true,
+        " key ",
+        "dr",
+        "33",
+        ""
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": true,
+        "apiKey": "key",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        true,
+        "key",
+        "dr!",
+        "33",
+        ""
+      ],
+      "error": "SMSBower 服务代码格式不正确",
+      "normalized": null
+    }
+  ],
+  "smsbowerDivergent": [
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "²",
+        ""
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "²",
+        "maxPrice": ""
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "1_0"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "1_0"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "inf"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "inf"
+      }
+    },
+    {
+      "input": [
+        false,
+        "",
+        "dr",
+        "33",
+        "nan"
+      ],
+      "error": "",
+      "normalized": {
+        "enabled": false,
+        "apiKey": "",
+        "service": "dr",
+        "country": "33",
+        "maxPrice": "nan"
+      }
+    }
+  ]
+}

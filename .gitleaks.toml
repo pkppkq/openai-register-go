@@ -1,0 +1,12 @@
+title = "openai-register-go secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "测试夹具中的 JWT 均为 alg=none 且使用显式假签名"
+targetRules = ["jwt"]
+regexTarget = "match"
+regexes = [
+  '''\.(?:sig|synthetic)''',
+]

@@ -1,0 +1,14 @@
+{
+  // `tsconfig.json` plus the test suite. svelte-check runs against this one so
+  // that `src/lib/__tests__/*.test.ts` is type-checked like everything else —
+  // it resolves a `.svelte` specifier through the Svelte compiler and sees the
+  // real `<script module>` exports, which plain `tsc` cannot (see the comment
+  // on the exclusion in tsconfig.json).
+  //
+  // This is a superset, not a second opinion: everything tsconfig.json checks
+  // is checked here too, so `npm run check` remains one command covering the
+  // whole tree.
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.svelte", "wailsjs/**/*.d.ts"],
+  "exclude": []
+}
