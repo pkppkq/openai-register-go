@@ -41,7 +41,7 @@ jobs:
         run: npm test --prefix frontend -- --run
 
       - name: Set China Standard Time
-        run: tzutil /s `"China Standard Time`"
+        run: tzutil /s 'China Standard Time'
 
       - name: Test Go backend
         run: go test ./... -count=1
