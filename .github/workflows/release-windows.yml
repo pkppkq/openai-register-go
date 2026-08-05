@@ -72,7 +72,7 @@ jobs:
             '- 程序数据默认保存到 `%APPDATA%\OpenAIRegister`'
             '- 发布资产由 GitHub Actions 从公开 `main` 源码构建并通过前端检查、前后端测试及 `go vet`'
             "- 文件大小：$size 字节"
-            "- SHA-256：`$sha256`"
+            "- SHA-256：$sha256"
           ) -join [Environment]::NewLine
           [IO.File]::WriteAllText($notesPath, $notes, [Text.UTF8Encoding]::new($false))
 
